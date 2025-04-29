@@ -10,3 +10,4 @@ public class PlayerCamera : MonoBehaviour
         transform.position = player.position + offset;
         transform.LookAt(player);
     }
+}
