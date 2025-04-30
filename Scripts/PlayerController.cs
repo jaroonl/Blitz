@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//player controller
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
