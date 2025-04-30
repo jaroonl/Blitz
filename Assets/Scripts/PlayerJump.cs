@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   public AudioClip jumpSound; 
+    private AudioSource audioSource;
+
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayJumpSound()
     {
-        
+        audioSource.PlayOneShot(jumpSounds[index]);
     }
 }
