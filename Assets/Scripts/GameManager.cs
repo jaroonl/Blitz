@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 // can be access from anywhere
 public static GameManager instance = null;
 
+
 // Called when the object is initialized
 void Awake()
 {
@@ -25,6 +26,8 @@ Destroy(gameObject);
 DontDestroyOnLoad(gameObject);
 print("GameManager Initialized");
 }
+
+
 
 void Update(){
     if(GetComponent<Collider>().gameObject.tag == "Goal")
