@@ -4,6 +4,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 public float walkSpeed = 8f;
 public float jumpSpeed = 7f;
+
+public AudioClip jumpSound;  
+private AudioSource audioSource;
+
 //to keep our rigid body
 Rigidbody rb;
 //to keep the collider object
@@ -16,6 +20,8 @@ void Start () {
 rb = GetComponent<Rigidbody>();
 //get the player collider
 coll = GetComponent<Collider>();
+
+audioSource = GetComponent<AudioSource>();
 }
 // Update is called once per frame
 void Update ()
@@ -64,6 +70,10 @@ pressedJump = true;
 Vector3 jumpVector = new Vector3(0f, jumpSpeed, 0f);
 // Make the player jump by adding velocity
 rb.linearVelocity = rb.linearVelocity + jumpVector;
+
+//jump sound
+if (jumpSound != null && audioSource != null)
+        audioSource.PlayOneShot(jumpSound);
 }
 }
 else
