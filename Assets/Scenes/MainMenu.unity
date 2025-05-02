@@ -767,7 +767,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481432916}
   m_CullTransparentMesh: 1
---- !u!1001 &507920099
+--- !u!1001 &605592980
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -819,13 +819,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5984531125592561155, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: Priority
-      value: 98
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984531125592561155, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_Volume
-      value: 0.32
+    - target: {fileID: 2307318498422368252, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
+      propertyPath: m_TagString
+      value: Music
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2652,4 +2648,4 @@ SceneRoots:
   - {fileID: 1492330750}
   - {fileID: 324811386}
   - {fileID: 759842486}
-  - {fileID: 507920099}
+  - {fileID: 605592980}
