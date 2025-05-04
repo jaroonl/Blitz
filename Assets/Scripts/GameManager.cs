@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 // Static instance of the Game Manager,
 // can be access from anywhere
 public static GameManager instance = null;
-
 
 // Called when the object is initialized
 void Awake()
@@ -28,14 +26,13 @@ DontDestroyOnLoad(gameObject);
 print("GameManager Initialized");
 }
 
-
-
-public void LoadNextLevel()
+void Update(){
+    if(GetComponent<Collider>().gameObject.tag == "Goal")
 {
-    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    SceneManager.LoadScene(currentSceneIndex + 1);
+// Next level
+print("next level");
 }
-
+}
 
 }
 

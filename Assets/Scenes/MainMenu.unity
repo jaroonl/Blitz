@@ -408,6 +408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd35c6f64a6da6c4484ab8b132f3723b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuPanel: {fileID: 0}
+  levelSelectionPanel: {fileID: 0}
+  playButton: {fileID: 0}
 --- !u!114 &324811383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,67 +770,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 481432916}
   m_CullTransparentMesh: 1
---- !u!1001 &605592980
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 244282169918097234, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2307318498422368252, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_Name
-      value: MusicManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2307318498422368252, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
-      propertyPath: m_TagString
-      value: Music
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b6a7732fcd8cd744abfdb5e53cb09da9, type: 3}
 --- !u!1 &759842483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,6 +1829,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd35c6f64a6da6c4484ab8b132f3723b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuPanel: {fileID: 1581631172}
+  levelSelectionPanel: {fileID: 1793211685}
+  playButton: {fileID: 998598133}
 --- !u!1 &1660250371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2648,4 +2593,3 @@ SceneRoots:
   - {fileID: 1492330750}
   - {fileID: 324811386}
   - {fileID: 759842486}
-  - {fileID: 605592980}

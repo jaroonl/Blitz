@@ -5,23 +5,7 @@ public class MusicPlayer : MonoBehaviour
     public AudioClip[] playlist;
     private AudioSource audioSource;
     private int currentTrackIndex = 0;
-    private static MusicPlayer instance;
 
-
-//Should allow for the music manager to persist between levels and screens
-    void Awake()
-    {
-         if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); 
-        }
-        else
-        {
-            Destroy(gameObject); // Destroy duplicates
-            return;
-        }
-    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
