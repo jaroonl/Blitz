@@ -24,15 +24,9 @@ public class PlayerCollision : MonoBehaviour
     {
         float completionTime = Time.time - startTime;
 
-        if (IsLastLevel())
-        {
-            endScreenManager.ShowLevelComplete(completionTime);
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            GameManager.instance.LoadNextLevel();
-        }
+        endScreenManager.ShowLevelComplete(completionTime); 
+
+        gameObject.SetActive(false);
     }
 }
 
