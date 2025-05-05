@@ -54,53 +54,30 @@ rb.MovePosition(newPosition);
 // Check whether the player can jump and make it jump
 void JumpHandler()
 {
-// Jump axis
-float jAxis = Input.GetAxis("Jump");
-// Is grounded
-bool isGrounded = CheckGrounded();
-// Check if the player is pressing the jump key
-if (jAxis > 0f)
-{
-// Make sure we've not already jumped on this key press
-if(!pressedJump && isGrounded)
-{
-// We are jumping on the current key press
-pressedJump = true;
-// Jumping vector
-Vector3 jumpVector = new Vector3(0f, jumpSpeed, 0f);
-// Make the player jump by adding velocity
-rb.linearVelocity = rb.linearVelocity + jumpVector;
+    float jAxis = Input.GetAxis("Jump");
+    bool isGrounded = CheckGrounded();
 
-//jump sound
-if (jumpSound != null && audioSource != null)
-        audioSource.PlayOneShot(jumpSound);
-}
-}
-else
-{
-// Update flag so it can jump again if we press the jump key
-pressedJump = false;
-}
+    if (jAxis > 0f)
+    {
+        if (!pressedJump && isGrounded)
+        {
+            pressedJump = true;
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpSpeed, rb.linearVelocity.z);
+
+            if (jumpSound != null && audioSource != null)
+                audioSource.PlayOneShot(jumpSound);
+        }
+    }
+    else
+    {
+        pressedJump = false;
+    }
 }
 // Check if the object is grounded
 bool CheckGrounded()
 {
-// Object size in x
-float sizeX = coll.bounds.size.x;
-float sizeZ = coll.bounds.size.z;
-float sizeY = coll.bounds.size.y;
-// Position of the 4 bottom corners of the game object
-// We add 0.01 in Y so that there is some distance between the point and the floor
-Vector3 corner1 = transform.position + new Vector3(sizeX/2, -sizeY / 2 + 0.01f, sizeZ / 2);
-Vector3 corner2 = transform.position + new Vector3(-sizeX / 2, -sizeY / 2 + 0.01f, sizeZ / 2);
-Vector3 corner3 = transform.position + new Vector3(sizeX / 2, -sizeY / 2 + 0.01f, -sizeZ / 2);
-Vector3 corner4 = transform.position + new Vector3(-sizeX / 2, -sizeY / 2 + 0.01f, -sizeZ / 2);
-// Send a short ray down the cube on all 4 corners to detect ground
-bool grounded1 = Physics.Raycast(corner1, new Vector3(0, -1, 0), 0.01f);
-bool grounded2 = Physics.Raycast(corner2, new Vector3(0, -1, 0), 0.01f);
-bool grounded3 = Physics.Raycast(corner3, new Vector3(0, -1, 0), 0.01f);
-bool grounded4 = Physics.Raycast(corner4, new Vector3(0, -1, 0), 0.01f);
-// If any corner is grounded, the object is grounded
-return (grounded1 || grounded2 || grounded3 || grounded4);
+    float checkDistance = 0.2f;
+    Vector3 position = transform.position + Vector3.down * (coll.bounds.extents.y + 0.1f);
+    return Physics.CheckSphere(position, 0.1f, LayerMask.GetMask("Default")); 
 }
 }
