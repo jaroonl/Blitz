@@ -20,8 +20,6 @@ public class EndScreenManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("EndScreenManager Start called");
-        
         // Make sure both screens are hidden at the start
         levelCompleteScreen.SetActive(false);
         attemptFailedScreen.SetActive(false);
@@ -74,9 +72,12 @@ public class EndScreenManager : MonoBehaviour
 
     private void GoToLevelSelection()
     {
-        // Load the level selection scene
+        // Load the MainMenu scene
+        SceneManager.LoadScene("MainMenu");
         
-        SceneManager.LoadScene("LevelSelection");
+        // Set a PlayerPrefs flag to indicate we want to show the level selection panel
+        PlayerPrefs.SetInt("ShowLevelSelection", 1);
+        PlayerPrefs.Save();
     }
 
     private void RestartLevel()
@@ -88,7 +89,10 @@ public class EndScreenManager : MonoBehaviour
     private void GoToMainMenu()
     {
         // Load the main menu scene
-        
         SceneManager.LoadScene("MainMenu");
+        
+        // Set PlayerPrefs flag to show main menu (not level selection)
+        PlayerPrefs.SetInt("ShowLevelSelection", 0);
+        PlayerPrefs.Save();
     }
 }

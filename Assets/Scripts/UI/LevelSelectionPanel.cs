@@ -4,85 +4,58 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectionPanel : MonoBehaviour
 {
-    [Header("UI References")]
+    [SerializeField] private Button level1Button;
+    [SerializeField] private Button level2Button;
+    [SerializeField] private Button level3Button;
     [SerializeField] private Button backButton;
-    [SerializeField] private Button[] levelButtons;
     
-    [Header("Level Names")]
-    [SerializeField] private string[] levelSceneNames;
-    
-    // Reference to the main menu panel
     [SerializeField] private GameObject mainMenuPanel;
     
-    void Start()
+    private void Start()
     {
-        // Setup back button
-        if (backButton != null)
+        // Set up button listeners
+        if (level1Button != null) level1Button.onClick.AddListener(() => LoadLevel(1));
+        if (level2Button != null) level2Button.onClick.AddListener(() => LoadLevel(2));
+        if (level3Button != null) level3Button.onClick.AddListener(() => LoadLevel(3));
+        if (backButton != null) backButton.onClick.AddListener(BackToMainMenu);
+    }
+    
+    private void LoadLevel(int levelIndex)
+    {
+        string sceneName = "Level" + levelIndex;
+        
+        // Check if the scene exists in build settings
+        if (Application.CanStreamedLevelBeLoaded(sceneName))
         {
-            backButton.onClick.AddListener(GoBackToMainMenu);
+            SceneManager.LoadScene(sceneName);
         }
         else
         {
-            Debug.LogError("Back button reference is missing!");
-        }
-        
-        // Setup level buttons
-        for (int i = 0; i < levelButtons.Length && i < levelSceneNames.Length; i++)
-        {
-            int levelIndex = i; // Need to capture the index for the lambda
-            if (levelButtons[i] != null)
-            {
-                levelButtons[i].onClick.AddListener(() => LoadLevel(levelIndex));
-            }
+            Debug.LogWarning("Scene " + sceneName + " is not in the build settings!");
         }
     }
     
-    // Method to handle back button click
-    public void GoBackToMainMenu()
+    private void BackToMainMenu()
     {
         // Hide this panel
         gameObject.SetActive(false);
         
-        // Show main menu panel
+        // Show the main menu panel
         if (mainMenuPanel != null)
         {
             mainMenuPanel.SetActive(true);
         }
-        else
-        {
-            // If mainMenuPanel reference is not set, try to find MainMenu component
-            MainMenu mainMenu = FindObjectOfType<MainMenu>();
-            if (mainMenu != null)
-            {
-                // Call the method on MainMenu script to handle going back
-                mainMenu.BackToMainMenu();
-            }
-            else
-            {
-                Debug.LogError("Could not find MainMenu reference!");
-            }
-        }
     }
     
-    void LoadLevel(int index)
+    // This method can be called from other scripts to activate this panel
+    public void ShowPanel()
     {
-        if (index >= 0 && index < levelSceneNames.Length)
+        gameObject.SetActive(true);
+        
+        // Hide the main menu panel
+        if (mainMenuPanel != null)
         {
-            Debug.Log("Loading level: " + levelSceneNames[index]);
-            
-            // Make sure the scene is in build settings before loading
-            if (Application.CanStreamedLevelBeLoaded(levelSceneNames[index]))
-            {
-                SceneManager.LoadScene(levelSceneNames[index]);
-            }
-            else
-            {
-                Debug.LogError("Scene '" + levelSceneNames[index] + "' is not in Build Settings!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Invalid level index: " + index);
+            mainMenuPanel.SetActive(false);
         }
     }
 }

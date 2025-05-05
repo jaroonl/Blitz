@@ -1795,7 +1795,7 @@ GameObject:
   - component: {fileID: 1581631175}
   - component: {fileID: 1581631174}
   - component: {fileID: 1581631177}
-  - component: {fileID: 1581631176}
+  - component: {fileID: 1581631178}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -1860,7 +1860,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581631172}
   m_CullTransparentMesh: 1
---- !u!114 &1581631176
+--- !u!114 &1581631177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581631172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd35c6f64a6da6c4484ab8b132f3723b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1581631178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1874,19 +1886,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuPanel: {fileID: 1581631172}
   levelSelectionPanel: {fileID: 1793211685}
+  levelButtons: []
   playButton: {fileID: 998598133}
---- !u!114 &1581631177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581631172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd35c6f64a6da6c4484ab8b132f3723b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  backButton: {fileID: 290320025}
 --- !u!1 &1660250371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,16 +2239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb67e75c60d2f974388857e01c618c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level1Button: {fileID: 460773723}
+  level2Button: {fileID: 1660250373}
+  level3Button: {fileID: 1824680600}
   backButton: {fileID: 290320025}
-  levelButtons:
-  - {fileID: 460773723}
-  - {fileID: 1660250373}
-  - {fileID: 1824680600}
-  levelSceneNames:
-  - Level1
-  - Level2
-  - Level3
-  mainMenuPanel: {fileID: 0}
+  mainMenuPanel: {fileID: 1581631172}
 --- !u!1 &1824680598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,8 +2399,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: 184}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 58, y: 269}
+  m_SizeDelta: {x: 254.794, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1993823154
 MonoBehaviour:
@@ -2447,18 +2444,18 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 2425
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2490,7 +2487,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -291.28207, y: 0, z: -78.75478, w: 0}
+  m_margin: {x: -291.28207, y: 0, z: -307.89456, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
