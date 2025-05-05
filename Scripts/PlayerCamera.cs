@@ -1,5 +1,5 @@
 using UnityEngine;
-//player camera
+
 public class PlayerCamera : MonoBehaviour
 {
     public Transform player;
