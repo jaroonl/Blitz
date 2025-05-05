@@ -17,22 +17,17 @@ public class MainMenuController : MonoBehaviour
     
     private void Start()
     {
-        // Check if we should show level selection panel based on PlayerPrefs
         bool showLevelSelection = PlayerPrefs.GetInt("ShowLevelSelection", 0) == 1;
         
-        // Set up the panels based on the flag
         if (mainMenuPanel != null) mainMenuPanel.SetActive(!showLevelSelection);
         if (levelSelectionPanel != null) levelSelectionPanel.SetActive(showLevelSelection);
         
-        // Reset the flag for next time
         PlayerPrefs.SetInt("ShowLevelSelection", 0);
         PlayerPrefs.Save();
         
-        // Set up button listeners
         if (playButton != null) playButton.onClick.AddListener(OpenLevelSelection);
         if (backButton != null) backButton.onClick.AddListener(BackToMainMenu);
         
-        // Set up level buttons
         SetupLevelButtons();
     }
     
@@ -54,7 +49,7 @@ public class MainMenuController : MonoBehaviour
         
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            int levelIndex = i + 1; // Level1, Level2, etc.
+            int levelIndex = i + 1;
             
             if (levelButtons[i] != null)
             {
@@ -66,8 +61,7 @@ public class MainMenuController : MonoBehaviour
     public void LoadLevel(int levelIndex)
     {
         string sceneName = "Level" + levelIndex;
-        
-        // Check if the scene exists in build settings
+
         if (Application.CanStreamedLevelBeLoaded(sceneName))
         {
             SceneManager.LoadScene(sceneName);

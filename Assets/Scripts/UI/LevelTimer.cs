@@ -11,7 +11,6 @@ public class LevelTimer : MonoBehaviour
 
     private void Start()
     {
-        // Start the timer when the level begins
         StartTimer();
     }
 
@@ -19,10 +18,8 @@ public class LevelTimer : MonoBehaviour
     {
         if (isTimerRunning)
         {
-            // Update timer
             currentTime += Time.deltaTime;
-            
-            // Update the in-game timer display if available
+
             if (inGameTimerText != null)
             {
                 inGameTimerText.text = FormatTime(currentTime);
@@ -52,18 +49,15 @@ public class LevelTimer : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeInSeconds % 60);
         int milliseconds = Mathf.FloorToInt((timeInSeconds * 100) % 100);
         
-        // Format as mm:ss:ms
         return string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
     }
 
-    // Call this when player completes the level
     public void OnLevelComplete()
     {
         StopTimer();
         endScreenManager.ShowLevelComplete(currentTime);
     }
 
-    // Call this when player fails the level
     public void OnLevelFailed()
     {
         StopTimer();
