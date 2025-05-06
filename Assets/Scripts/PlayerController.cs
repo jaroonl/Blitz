@@ -4,16 +4,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 public float walkSpeed = 8f;
 public float jumpSpeed = 7f;
+public float jumpCooldown = 0.3f;
 
 public AudioClip jumpSound;  
 private AudioSource audioSource;
+
 
 //to keep our rigid body
 Rigidbody rb;
 //to keep the collider object
 Collider coll;
 //flag to keep track of whether a jump started
-bool pressedJump = false;
+private bool readyToJump = true;
 // Use this for initialization
 void Start () {
 //get the rigid body component for later use
@@ -53,26 +55,25 @@ rb.MovePosition(newPosition);
 }
 // Check whether the player can jump and make it jump
 void JumpHandler()
-{
-    float jAxis = Input.GetAxis("Jump");
-    bool isGrounded = CheckGrounded();
-
-    if (jAxis > 0f)
     {
-        if (!pressedJump && isGrounded)
+        if(Input.GetButtonDown("Jump") && readyToJump && CheckGrounded())
         {
-            pressedJump = true;
+            readyToJump = false;
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpSpeed, rb.linearVelocity.z);
-
+            
             if (jumpSound != null && audioSource != null)
                 audioSource.PlayOneShot(jumpSound);
+                
+            Invoke(nameof(ResetJump), jumpCooldown);
         }
     }
-    else
+
+     void ResetJump()
     {
-        pressedJump = false;
+        readyToJump = true;
     }
-}
+
+
 // Check if the object is grounded
 bool CheckGrounded()
 {
